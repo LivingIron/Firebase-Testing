@@ -1,12 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { StyleSheet, SafeAreaView,TextInput ,Button } from 'react-native';
+import { writeUserData } from './src/config/firebaseConfig';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <TextInput placeholder='Enter your email' />
+      <TextInput placeholder='Enter your password'/>
+      <Button title='Login' onPress={writeUserData("Adasdwadsad","Peter","yes@gmail.com")}/>
+    </SafeAreaView>
   );
 }
 
