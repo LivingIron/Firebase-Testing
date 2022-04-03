@@ -1,14 +1,14 @@
 
+import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet, SafeAreaView,TextInput ,Button } from 'react-native';
 import { writeUserData } from './src/config/firebaseConfig';
+import Routing from "./src/config/Routing";
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <TextInput placeholder='Enter your email' />
-      <TextInput placeholder='Enter your password'/>
-      <Button title='Login' onPress={writeUserData("Adasdwadsad","Peter","yes@gmail.com")}/>
-    </SafeAreaView>
+    <NavigationContainer  style={styles.container}>
+      <Routing />
+    </NavigationContainer >
   );
 }
 

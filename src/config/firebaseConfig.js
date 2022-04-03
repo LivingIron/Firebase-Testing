@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app";
-import {getAuth} from "firebase/auth";
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth";
 import {getDatabase,ref,set} from "firebase/database";
 
 const firebaseApp = initializeApp({
@@ -25,3 +25,25 @@ export const writeUserData = (userId,name,email) =>{
     })
 }
 
+
+
+export const createUser = async (email,password) =>{
+    try{
+        const response = await createUserWithEmailAndPassword(auth,email,password);
+        const user = await response.user;
+    }catch(error){
+        console.log(error);
+    }
+}
+
+export const loginUser = (email,password) =>{
+    signInWithEmailAndPassword(auth,email,password)
+    .then((userCredential)=>{
+        const user = userCredential.user;
+    })
+    .then(()=> console.log("Logged in !"))
+    .catch((error)=>{
+        const errorCode=error.code;
+        const errorMessage = error.message;
+    })
+}
